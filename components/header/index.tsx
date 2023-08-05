@@ -2,6 +2,7 @@ import Image from "next/image";
 import Styles from "./header.module.scss"
 import team from "../../public/images/team.svg"
 import Link from "next/link";
+import CadastroPrestadorForm from "../cadastroPrestador/index";
 
 const Header = () => {
   return (
@@ -10,7 +11,7 @@ const Header = () => {
         <Image src={team} alt="logotipo" className={Styles.logotipo}/>
       </div>
       <div className={Styles.menu}>
-            <Link href="/">Cadastrar novo prestador</Link>
+            <Link href="/cadastro">Cadastrar novo prestador</Link>
             <Link href="/">Listar todos os prestadores</Link>
       </div>
       <div className={Styles.action}>
