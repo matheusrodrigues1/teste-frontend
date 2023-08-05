@@ -1,0 +1,36 @@
+.container{
+padding-top: 34px;
+padding-bottom: 34px;
+height: 150px;
+width: 100%;
+background-color: #380158;
+border-bottom: 0.5px solid yellowgreen;
+display: flex;
+align-items: center;
+justify-content: space-between;
+}
+
+.logotipo {
+  height: 125px;
+  width: 135px;
+  object-fit: contain;
+  margin-left: 80px;
+}
+
+.menu {
+  color: white;
+  font-size: 22px;
+  a+a{
+    margin-left: 38.9px;
+  }
+}
+
+.button {
+  padding: 15px 50px;
+  border-radius: 5px;
+  margin-right: 50px;
+  font-size: 16px;
+  font-weight: bold;
+  color: burlywood;
+  border: none;
+}
