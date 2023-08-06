@@ -16,9 +16,11 @@
     "eslint": "8.46.0",
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
+    "papaparse": "^5.4.1",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hook-form": "^7.45.3",
+    "react-router-dom": "^6.14.2",
     "sass": "^1.64.2",
     "typescript": "5.1.6"
   }

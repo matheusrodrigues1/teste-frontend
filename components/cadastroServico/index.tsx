@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react';
 import { SubmitHandler, useForm } from 'react-hook-form';
 import axios from 'axios';
-import Styles from './cadastro.module.scss';
+import Styles from "./cadServico.module.scss"; // Importar os estilos do módulo
+import { useState, useEffect } from 'react';
 import Link from 'next/link';
 
 interface FormData {
   nome: string;
-  email: string;
-  telefone: string;
+  descricao: string;
+  valor: number;
 }
 
-const CadastroPrestadorForm: React.FC = () => {
+const CadastroServicoForm: React.FC = () => {
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [showConfirmation, setShowConfirmation] = useState(false);
@@ -24,21 +24,16 @@ const CadastroPrestadorForm: React.FC = () => {
 
   const onSubmit: SubmitHandler<FormData> = async (data) => {
     try {
-      await axios.post('http://localhost:8000/api/prestadores', data);
+      await axios.post('http://localhost:8000/api/servicos', data);
       reset();
-      setSuccessMessage('Prestador cadastrado com sucesso!');
+      setSuccessMessage('Serviço cadastrado com sucesso!');
       setErrorMessage(null);
       setShowConfirmation(true);
 
-      setTimeout(() => {
-        setShowConfirmation(false);
-      }, 3000);
+      
     } catch (error) {
-      setErrorMessage('Ocorreu um erro ao cadastrar o prestador. Por favor, tente novamente mais tarde.');
+      setErrorMessage('Ocorreu um erro ao cadastrar o serviço. Por favor, tente novamente mais tarde.');
       setSuccessMessage(null);
-      setTimeout(() => {
-        setShowConfirmation(false);
-      }, 3000);
     }
   };
 
@@ -57,30 +52,29 @@ const CadastroPrestadorForm: React.FC = () => {
   return (
     <div className={Styles.Container}>
       <div className={Styles.form}>
-        <h1>Preencher Formulario</h1>
+        <h1>Cadastrar Serviço</h1>
         {showConfirmation && (
           <div className={successMessage ? Styles.success : Styles.error}>
             {successMessage || errorMessage}
           </div>
         )}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <input {...register('nome', { required: true })} placeholder="Nome completo" />
+          <input {...register('nome', { required: true })} placeholder="Nome do serviço" />
           {errors.nome && <span>Este campo é obrigatório</span>}
 
-          <input type="email" {...register('email', { required: true })} placeholder="E-mail profissional" />
-          {errors.email && <span>Este campo é obrigatório</span>}
+          <textarea {...register('descricao', { required: true })} placeholder="Descrição do serviço" />
+          {errors.descricao && <span>Este campo é obrigatório</span>}
 
-          <input type="tel" {...register('telefone', { required: true })} placeholder="Celular/Whatsapp" />
-          {errors.telefone && <span>Este campo é obrigatório</span>}
+          <input type="number" {...register('valor', { required: true, min: 0 })} placeholder="Valor do serviço" />
 
-          <button type="submit">Cadastrar</button>
+          <button>Cadastrar</button>
         </form>
-        <Link href="/servico">
-          <button>Cadastrar Serviço</button>
+        <Link href="/">
+          <button>Voltar</button>
         </Link>
       </div>
     </div>
   );
 };
 
-export default CadastroPrestadorForm;
+export default CadastroServicoForm;
