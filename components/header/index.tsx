@@ -12,7 +12,7 @@ const Header = () => {
       </div>
       <div className={Styles.menu}>
             <Link href="/cadastro">Cadastrar novo prestador</Link>
-            <Link href="/">Listar todos os prestadores</Link>
+            <Link href="/importacao">Importar serviços</Link>
       </div>
       <div className={Styles.action}>
         <button className={Styles.button}>Fale conosco</button>

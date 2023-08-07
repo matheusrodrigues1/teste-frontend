@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
+import Style from "./import.module.scss"
 
 interface UploadCSVProps {
   onUpload: (data: any[]) => void;
@@ -31,10 +32,10 @@ const UploadCSV: React.FC<UploadCSVProps> = ({ onUpload }) => {
   };
 
   return (
-    <div>
-      <input type="file" accept=".csv" onChange={handleFileChange} />
-      <button onClick={handleUpload}>Importar CSV</button>
-      {error && <p>{error}</p>}
+    <div className={Style.container}>
+      <input className={Style.input} type="file" accept=".csv" onChange={handleFileChange} />
+      <button className={Style.button} onClick={handleUpload}>Importar CSV</button>
+      {error && <p className={Style.error}>{error}</p>}
     </div>
   );
 };
